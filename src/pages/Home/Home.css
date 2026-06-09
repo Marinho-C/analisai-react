@@ -1,3 +1,337 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
 body {
-  margin: 0;
+    background: linear-gradient(90deg, #000000, #00724a);
+    margin: 0;
+    padding: 0;
+}
+
+#cabeçalho {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: #04724b00;
+    border-radius: 20px;
+}
+
+#icon-menu {
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+}
+
+#logo {
+    width: 110px;
+    height: 20px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#icon-person {
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+    margin-left: auto; /* Alinha dinamicamente à direita sem quebrar o layout */
+}
+
+#selecionar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    margin: 40px auto;      
+    gap: 20px;              
+}
+
+#corpo h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 25px;
+    padding-top:80px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+#corpo h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; 
+    text-align: center;
+    font-size: 17.3px;
+    color: #ffffff;
+}
+
+#photo-selection {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+}
+
+#arquivo {
+    background-color: #04724b;
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 40px;
+    color: #ffffff;
+    border: 2px solid #96ffda;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+#recomendacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; 
+    font-size: 13px;
+}
+
+/* ==================== CONFIGURAÇÕES DO MENU LATERAL ==================== */
+
+#menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: #1e3830; 
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: transform 0.4s ease; 
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu-fechado {
+    transform: translateX(-100%); 
+}
+
+.menu-aberto {
+    transform: translateX(0); 
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 20px 20px;
+}
+
+.menu-logo {
+    width: 110px;
+    height: 20px;
+}
+
+.menu-fechar {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.menu-titulo {
+    color: #8fa09a;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.menu-opcoes {
+    list-style: none;
+    padding: 0 15px;
+    margin: 0;
+}
+
+.opcao-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.opcao-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.opcao-item.ativa {
+    background-color: #ffffff;
+    border-radius: 10px 0 0 10px; 
+    margin-right: -15px; 
+}
+
+.opcao-item.ativa a {
+    color: #1e3830;
+    font-weight: 600;
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.menu-rodape {
+    margin-top: auto; 
+    padding: 0 15px 30px 15px;
+}
+
+.menu-divisor {
+    border: 0;
+    border-top: 1px solid #334e45;
+    margin-bottom: 20px;
+}
+
+.opcao-item.sair a {
+    color: #a0b0ab;
+}
+
+.escondido {
+    display: none !important;
+}
+
+/* Estilização da área de confirmação */
+#container-confirmacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+#container-confirmacao h2{
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.preview-box {
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#preview-foto {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    display: block;
+    object-fit: contain;
+}
+
+/* Botões de Ação */
+.botoes-confirmacao {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.botoes-confirmacao button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#btn-confirmar {
+    background-color: #04724b;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+    border: 1px solid rgba(255, 255, 255, 0.76);
+}
+
+#btn-confirmar:hover {
+    background-color: #1b5e20;
+}
+
+#btn-alterar {
+    background-color: #e0e0e000;
+    color: #ffffff;
+    font-weight: 100;
+    border: 1px solid rgba(255, 255, 255, 0.76);
+    border-radius: 20px;
+}
+
+#btn-alterar:hover {
+    background-color: #bdbdbd;
 }

@@ -8,6 +8,7 @@ import iconPerson from "../../assets/images/icon-person.png";
 import iconHome from "../../assets/images/icon-home.png";
 import iconEdit from "../../assets/images/icon-edit-person.png";
 import iconSelecionar from "../../assets/images/icon-selecionar.png";
+import iconHistorico from "../../assets/images/icon-historico.png"
 
 export default function Home() {
   return (
@@ -86,6 +87,20 @@ export default function Home() {
 
             <Link to="/editar-perfil">
               Editar Perfil
+            </Link>
+
+          </li>
+
+          <li className="opcao-item">
+
+            <img
+              className="menu-icon"
+              src={iconEdit}
+              alt="Editar"
+            />
+
+            <Link to="/historico">
+              Historico
             </Link>
 
           </li>

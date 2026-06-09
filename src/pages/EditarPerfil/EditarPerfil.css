@@ -1,8 +1,14 @@
+body {
+    background: linear-gradient(to top, #000000, #00724a);
+    margin: 0;
+    padding: 0;
+}
+
+
 .editar-perfil-container {
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
-  background-color: #f9f9f9;
 }
 
 .formulario-perfil {
@@ -12,13 +18,31 @@
 }
 
 .btn-salvar {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+    background-color: #1b3d1c;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-editar {
+    background-color: #1b3d1c78;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.btn-cancelar{
+    background-color: #546c55c6;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-salvar:hover {
-  background-color: #45a049;
+  background-color: #29752d;
 }
+

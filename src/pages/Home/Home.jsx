@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
@@ -8,9 +9,11 @@ import iconPerson from "../../assets/images/icon-person.png";
 import iconHome from "../../assets/images/icon-home.png";
 import iconEdit from "../../assets/images/icon-edit-person.png";
 import iconSelecionar from "../../assets/images/icon-selecionar.png";
-import iconHistorico from "../../assets/images/icon-historico.png"
 
 export default function Home() {
+
+  const [menuAberto, setMenuAberto] = useState(false);
+
   return (
     <>
       <header>
@@ -20,6 +23,7 @@ export default function Home() {
             id="icon-menu"
             src={iconMenu}
             alt="Menu"
+            onClick={() => setMenuAberto(true)}
           />
 
           <img
@@ -37,7 +41,10 @@ export default function Home() {
         </div>
       </header>
 
-      <nav id="menu-lateral">
+      <nav
+        id="menu-lateral"
+        className={menuAberto ? "menu-aberto" : "menu-fechado"}
+      >
 
         <div className="menu-header">
 
@@ -53,6 +60,7 @@ export default function Home() {
             className="menu-fechar"
             src={iconMenu}
             alt="Fechar"
+            onClick={() => setMenuAberto(false)}
           />
 
         </div>
@@ -82,7 +90,7 @@ export default function Home() {
             <img
               className="menu-icon"
               src={iconEdit}
-              alt="Editar"
+              alt="Editar Perfil"
             />
 
             <Link to="/editar-perfil">
@@ -96,11 +104,11 @@ export default function Home() {
             <img
               className="menu-icon"
               src={iconEdit}
-              alt="Editar"
+              alt="Histórico"
             />
 
             <Link to="/historico">
-              Historico
+              Histórico
             </Link>
 
           </li>
@@ -141,9 +149,7 @@ export default function Home() {
           </div>
 
           <div id="recomendacao">
-            <li>
-              Envie uma foto com iluminação clara
-            </li>
+            <li>Envie uma foto com iluminação clara</li>
           </div>
 
         </div>

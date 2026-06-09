@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./EditarPerfil.css";
+
+
+import logo from "../../assets/images/Logo AnalisaAI.png";
+import iconMenu from "../../assets/images/icon-menu.png";
+import iconPerson from "../../assets/images/icon-person.png";
+import iconHome from "../../assets/images/icon-home.png";
+import iconEdit from "../../assets/images/icon-edit-person.png";
+import iconSelecionar from "../../assets/images/icon-selecionar.png";
+
 
 export default function EditarPerfil() {
 
@@ -40,7 +51,118 @@ export default function EditarPerfil() {
 
   }, [estadoSelecionado]);
 
+  const [menuAberto, setMenuAberto] = useState(false);
+
   return (
+    <>
+
+    <header>
+            <div id="cabecalho">
+    
+              <img
+                id="icon-menu"
+                src={iconMenu}
+                alt="Menu"
+                onClick={() => setMenuAberto(true)}
+              />
+    
+              <img
+                id="logo"
+                src={logo}
+                alt="Logo"
+              />
+    
+              <img
+                id="icon-person"
+                src={iconPerson}
+                alt="Perfil"
+              />
+    
+            </div>
+          </header>
+    
+          <nav
+            id="menu-lateral"
+            className={menuAberto ? "menu-aberto" : "menu-fechado"}
+          >
+    
+            <div className="menu-header">
+    
+              <div className="menu-logo-container">
+                <img
+                  className="menu-logo"
+                  src={logo}
+                  alt="Logo"
+                />
+              </div>
+    
+              <img
+                className="menu-fechar"
+                src={iconMenu}
+                alt="Fechar"
+                onClick={() => setMenuAberto(false)}
+              />
+    
+            </div>
+    
+            <p className="menu-titulo">
+              Menu
+            </p>
+    
+            <ul className="menu-opcoes">
+    
+              <li className="opcao-item">
+
+                <Link to="/home" className="menu-link-completo">
+                    <img className="menu-icon" src={iconHome} alt="Home" />
+                    <span>Início</span>
+                    </Link>
+                
+                  <img
+                  className="menu-icon"
+                  src={iconHome}
+                  alt="Home"
+                />
+
+                </li>
+    
+              
+    
+              <li className="opcao-item">
+    
+                  <Link to="/editar-perfil" className="menu-link-completo">
+                    <img className="menu-icon" src={iconEdit} alt="Editar Perfil" />
+                    <span>Editar Perfil</span>
+                    </Link>
+
+                <img
+                  className="menu-icon"
+                  src={iconEdit}
+                  alt="Editar Perfil"
+                />
+    
+              </li>
+    
+              <li className="opcao-item">
+
+            <Link to="/historico" className="menu-link-completo">
+            <img className="menu-icon" src={iconEdit} alt="Histórico" />
+            <span>Histórico</span>
+            </Link>
+    
+                <img
+                  className="menu-icon"
+                  src={iconEdit}
+                  alt="Histórico"
+                />
+    
+              </li>
+    
+            </ul>
+    
+          </nav>
+
+
     <div className="editar-perfil-container">
 
       <h2>Meu Perfil - Dados Cadastrais</h2>
@@ -187,5 +309,7 @@ export default function EditarPerfil() {
       </section>
 
     </div>
+
+            </>
   );
 }

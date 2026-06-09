@@ -1,8 +1,67 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     background: linear-gradient(to top, #000000, #00724a);
     margin: 0;
     padding: 0;
 }
+
+
+/* ==================== CABEÇALHO ==================== */
+
+#cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 0 10px;
+}
+
+#icon-menu,
+#icon-person {
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+#logo {
+    width: clamp(220px, 18vw, 110px);
+    height: auto;
+}
+
 
 
 .editar-perfil-container {
@@ -46,3 +105,23 @@ body {
   background-color: #29752d;
 }
 
+/* Remove estilos padrões do link e faz ele ocupar o botão inteiro */
+.menu-link-completo {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaço entre o ícone e o texto */
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px; /* O espaçamento interno fica DENTRO do link */
+  text-decoration: none;
+  color: inherit; /* Herda a cor do texto definida no menu */
+}
+
+/* Se o seu .opcao-item antigo tinha padding, remova-o para o link preencher as bordas */
+.opcao-item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0; /* Deixe o padding por conta do .menu-link-completo */
+  cursor: pointer;
+}

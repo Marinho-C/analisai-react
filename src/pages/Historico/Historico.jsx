@@ -2,6 +2,11 @@ import { useState } from "react";
 // 1. IMPORTAÇÃO DO MENU (Subindo uma pasta e entrando em MenuLateral)
 import MenuLateral from "../MenuLateral/MenuLateral"; 
 import iconMenu from "../../assets/images/icon-menu.png";
+
+// ====== AS IMPORTAÇÕES QUE ESTAVAM FALTANDO AQUI: ======
+import logo from "../../assets/images/Logo AnalisaAI.png";
+import iconPerson from "../../assets/images/icon-person.png";
+
 import "./Historico.css";
 
 export default function Historico() {
@@ -12,13 +17,16 @@ export default function Historico() {
     <>
       <header>
         <div id="cabecalho">
-          {/* Botão que abre o menu ao ser clicado */}
-          <img 
-            src={iconMenu} 
-            alt="Menu" 
-            onClick={() => setMenuAberto(true)} 
+          <img
+            id="icon-menu"
+            src={iconMenu}
+            alt="Menu"
+            onClick={() => setMenuAberto(true)} // Abre o menu
           />
-          <h1>Histórico</h1>
+    
+          <img id="logo" src={logo} alt="Logo" />
+    
+          <img id="icon-person" src={iconPerson} alt="Perfil" />
         </div>
       </header>
 
@@ -26,8 +34,9 @@ export default function Historico() {
       <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
 
       <main>
-        <div id="Title">
-            <h2>Seu historico de plantas aparecerá aqui</h2>
+        {/* Alterado para id="corpo" para bater com o CSS que você já fez */}
+        <div id="corpo"> 
+          <h2>Seu histórico de plantas aparecerá aqui</h2>
         </div>
       </main>
     </>

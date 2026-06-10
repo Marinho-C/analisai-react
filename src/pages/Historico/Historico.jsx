@@ -1,18 +1,17 @@
 import { useState } from "react";
-// 1. IMPORTAÇÃO DO MENU (Subindo uma pasta e entrando em MenuLateral)
+// Removido o "Link" daqui se não for usar no texto, mas mantido o resto corrigido:
 import MenuLateral from "../MenuLateral/MenuLateral"; 
 import iconMenu from "../../assets/images/icon-menu.png";
-
-// ====== AS IMPORTAÇÕES QUE ESTAVAM FALTANDO AQUI: ======
-import logo from "../../assets/images/Logo AnalisaAI.png";
+import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
 
+import "../Home/Home.css"; // Importação correta do CSS do Histórico
 import "./Historico.css";
+// Se o CSS do menu estiver em outra pasta, importe direto assim: import "../MenuLateral/MenuLateral.css";
 
 export default function Historico() {
-  // 2. CRIAÇÃO DO ESTADO
   const [menuAberto, setMenuAberto] = useState(false);
-
+  
   return (
     <>
       <header>
@@ -23,22 +22,26 @@ export default function Historico() {
             alt="Menu"
             onClick={() => setMenuAberto(true)} // Abre o menu
           />
-    
+
           <img id="logo" src={logo} alt="Logo" />
-    
+
           <img id="icon-person" src={iconPerson} alt="Perfil" />
         </div>
       </header>
 
-      {/* 3. CHAMADA DO MENU */}
-      <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
-
       <main>
-        {/* Alterado para id="corpo" para bater com o CSS que você já fez */}
-        <div id="corpo"> 
-          <h2>Seu histórico de plantas aparecerá aqui</h2>
+        <div id="title">
+        <h2>Histórico</h2>
+        </div>
+
+        <div id="listagem">
+          <div id="box-plant">
+            //Colocar a imagem e as informações da planta
+          </div>
         </div>
       </main>
+
+      <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
     </>
   );
 }

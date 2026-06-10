@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // Importações de imagens necessárias apenas para o Menu
-import logo from "../../assets/images/Logo AnalisaAI.png";
+import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconMenu from "../../assets/images/icon-menu.png";
 import iconHome from "../../assets/images/icon-home.png";
 import iconEdit from "../../assets/images/icon-edit-person.png";
@@ -39,7 +39,7 @@ export default function MenuLateral({ menuAberto, setMenuAberto }) {
         </li>
 
         <li className="opcao-item">
-          <img className="menu-icon" src={iconEdit} alt="Histórico" />
+          <img className="menu-icon" src={iconEdit} alt="Historico" />
           <Link to="/historico">Histórico</Link>
         </li>
       </ul>

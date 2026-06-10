@@ -1,0 +1,11 @@
+#title h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 220%;
+    padding: 50px;
+    color: #ffffff;
+    font-weight: 500;
+    width: 90%;
+    max-width: 100%;
+    text-align: left;
+    margin: 0 auto;
+}

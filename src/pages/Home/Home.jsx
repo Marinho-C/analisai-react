@@ -5,7 +5,7 @@ import "./Home.css";
 import MenuLateral from "../MenuLateral/MenuLateral";
 
 // Imagens utilizadas apenas na Home e no Header
-import logo from "../../assets/images/Logo AnalisaAI.png";
+import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconMenu from "../../assets/images/icon-menu.png";
 import iconPerson from "../../assets/images/icon-person.png";
 import iconSelecionar from "../../assets/images/icon-selecionar.png";

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-import logo from "../../assets/images/Logo AnalisaAI.png";
+import logo from "../../assets/images/Logo-AnalisaAI.png";
 
 export default function Login() {
   const navigate = useNavigate();

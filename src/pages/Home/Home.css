@@ -58,6 +58,7 @@ body {
 #logo {
     width: clamp(220px, 18vw, 110px);
     height: auto;
+    margin-top: 0;
 }
 
 /* ==================== CONTEÚDO ==================== */

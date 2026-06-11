@@ -12,12 +12,16 @@ export default function Login() {
 
   return (
     <>
+      
+      <div id="login-container">
       <div id="logo">
         <img src={logo} alt="Logo AnalisaAI" />
       </div>
 
       <div id="title">
         <h2>Realize seu acesso</h2>
+      </div>
+
       </div>
 
       <div id="inputs">

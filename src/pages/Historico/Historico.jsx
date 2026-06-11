@@ -1,6 +1,6 @@
 import { useState } from "react";
 // Removido o "Link" daqui se não for usar no texto, mas mantido o resto corrigido:
-import MenuLateral from "../MenuLateral/MenuLateral"; 
+import MenuLateral from "../MenuLateral/MenuLateral"; // importa o menu
 import iconMenu from "../../assets/images/icon-menu.png";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
@@ -10,12 +10,12 @@ import "./Historico.css";
 // Se o CSS do menu estiver em outra pasta, importe direto assim: import "../MenuLateral/MenuLateral.css";
 
 export default function Historico() {
-  const [menuAberto, setMenuAberto] = useState(false);
+  const [menuAberto, setMenuAberto] = useState(false); //menu
   
   return (
     <>
       <header>
-        <div id="cabecalho">
+        <div id="cabecalho"> 
           <img
             id="icon-menu"
             src={iconMenu}
@@ -41,7 +41,7 @@ export default function Historico() {
         </div>
       </main>
 
-      <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
+      <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} /> //coloca isso de menu tambem
     </>
   );
 }

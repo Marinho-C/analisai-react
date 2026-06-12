@@ -55,7 +55,8 @@ export default function EditarPerfil() {
                 <label htmlFor="nome">Nome</label>
                 <div className="input-botao-wrapper">
                   <input type="text" id="nome" placeholder="Digite seu nome" />
-                  <button type="button" className="btn-editar">✏️ Editar</button>
+                  <button type="button" className="btn-editar">
+                    <BsPencil /> Editar</button>
                 </div>
               </div>
 
@@ -92,7 +93,8 @@ export default function EditarPerfil() {
                 <label htmlFor="localidade">Localidade</label>
                 <div className="input-botao-wrapper">
                   <input type="text" id="localidade" placeholder="Nome da Localidade" />
-                  <button type="button" className="btn-editar">✏️ Editar</button>
+                  <button type="button" className="btn-editar">
+                    <BsPencil /> Editar</button>
                 </div>
               </div>
 
@@ -118,7 +120,8 @@ export default function EditarPerfil() {
                 <label htmlFor="fazenda">Nome da Fazenda</label>
                 <div className="input-botao-wrapper">
                   <input type="text" id="fazenda" placeholder="Nome da Fazenda" />
-                  <button type="button" className="btn-editar">✏️ Editar</button>
+                  <button type="button" className="btn-editar">
+                    <BsPencil /> Editar</button>
                 </div>
               </div>
 

@@ -40,6 +40,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
     border: 1px solid #ffffff;
     border-radius: 30px;
@@ -53,12 +54,17 @@ body {
     height: 60px;
     padding: 15px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
-#logo {
-    width: clamp(220px, 18vw, 110px);
+#cabecalho #logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(90px, 18vw, 220px);
     height: auto;
-    margin-top: 0;
+    margin: 0;
+    pointer-events: none;
 }
 
 /* ==================== CONTEÚDO ==================== */
@@ -66,7 +72,7 @@ body {
 #corpo h2 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    font-size: clamp(20px, 5vw, 25px);
+    font-size: clamp(18px, 4vw, 25px);
     padding-top: 80px;
     color: #ffffff;
     font-weight: 500;
@@ -80,7 +86,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     text-align: center;
-    font-size: clamp(14px, 4vw, 17px);
+    font-size: clamp(13px, 3vw, 17px);
     color: #ffffff;
 
     width: 90%;
@@ -98,7 +104,7 @@ body {
 }
 
 #photo-selection {
-    width: clamp(80px, 18vw, 100px);
+    width: clamp(70px, 15vw, 100px);
     height: auto;
     padding: 20px;
 }
@@ -121,7 +127,7 @@ body {
     text-align: center;
 
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(18px, 4vw, 25px);
+    font-size: clamp(16px, 4vw, 25px);
     font-weight: 400;
 
     cursor: pointer;
@@ -351,16 +357,34 @@ body {
     background-color: rgba(255,255,255,0.15);
 }
 
-/* ==================== TABLET ==================== */
+/* ==================== TABLET (até 768px) ==================== */
 
 @media (max-width: 768px) {
 
     #cabecalho {
-        margin: 15px;
+        margin: 12px 15px;
+        padding: 0 8px;
+    }
+
+    #icon-menu,
+    #icon-person {
+        width: 48px;
+        height: 48px;
+        padding: 12px;
     }
 
     #corpo h2 {
         padding-top: 50px;
+        width: 92%;
+    }
+
+    #selecionar {
+        margin: 30px auto;
+    }
+
+    #arquivo {
+        width: 80%;
+        min-height: 55px;
     }
 
     #recomendacao {
@@ -370,26 +394,46 @@ body {
     .opcao-item a {
         font-size: 14px;
     }
+
+    .botoes-confirmacao {
+        gap: 10px;
+    }
 }
 
-/* ==================== CELULAR ==================== */
+/* ==================== CELULAR (até 480px) ==================== */
 
 @media (max-width: 480px) {
+
+    #cabecalho {
+        margin: 10px 12px;
+        border-radius: 20px;
+        padding: 0 4px;
+    }
+
+    #icon-menu,
+    #icon-person {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
 
     #logo {
         width: 90px;
     }
 
-    #icon-menu,
-    #icon-person {
-        width: 18px;
-        height: 18px;
-        padding: 12px;
+    #corpo h2 {
+        padding-top: 35px;
+        width: 95%;
     }
 
     #arquivo {
-        min-height: 55px;
-        font-size: 18px;
+        width: 88%;
+        min-height: 52px;
+        font-size: 16px;
+    }
+
+    #photo-selection {
+        padding: 12px;
     }
 
     #menu-lateral {
@@ -402,5 +446,31 @@ body {
 
     .botoes-confirmacao button {
         width: 100%;
+        min-width: unset;
+    }
+
+    .preview-box {
+        padding: 12px;
+    }
+}
+
+/* ==================== TELAS MUITO PEQUENAS (até 360px) ==================== */
+
+@media (max-width: 360px) {
+
+    #cabecalho {
+        margin: 8px;
+        border-radius: 15px;
+    }
+
+    #icon-menu,
+    #icon-person {
+        width: 34px;
+        height: 34px;
+        padding: 8px;
+    }
+
+    #logo {
+        width: 75px;
     }
 }

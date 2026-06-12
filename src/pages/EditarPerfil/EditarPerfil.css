@@ -59,6 +59,7 @@ h3 {
   background-color: #f9f9f9;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  min-width: 0;
 }
 
 .campo-sem-botao select {
@@ -97,6 +98,7 @@ h3 {
   font-weight: 500;
   white-space: nowrap;
   width: 90px;
+  flex-shrink: 0;
   transition: background-color 0.3s ease;
 }
 
@@ -110,6 +112,7 @@ h3 {
   justify-content: center;
   gap: 120px;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .btn-salvar,
@@ -139,4 +142,117 @@ h3 {
 
 .btn-cancelar:hover {
   background-color: #7bc97e;
+}
+
+/* ==================== TABLET (até 900px) ==================== */
+
+@media (max-width: 900px) {
+
+  .editar-perfil-container {
+    margin-top: 80px;
+    padding: 16px;
+  }
+
+  .colunas-2 {
+    gap: 24px;
+  }
+}
+
+/* ==================== TABLET PEQUENO (até 700px) ==================== */
+
+@media (max-width: 700px) {
+
+  .colunas-2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .botoes-finais {
+    gap: 20px;
+  }
+
+  .btn-salvar,
+  .btn-cancelar {
+    width: 160px;
+  }
+}
+
+/* ==================== CELULAR (até 480px) ==================== */
+
+@media (max-width: 480px) {
+
+  .editar-perfil-container {
+    margin-top: 70px;
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .colunas-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .campo-com-botao label,
+  .campo-sem-botao label {
+    font-size: 13px;
+  }
+
+  .campo-com-botao input,
+  .campo-sem-botao select {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .campo-com-botao .btn-editar {
+    width: 80px;
+    padding: 10px 10px;
+    font-size: 13px;
+  }
+
+  .botoes-finais {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .btn-salvar,
+  .btn-cancelar {
+    width: 140px;
+    padding: 11px 16px;
+    font-size: 14px;
+  }
+}
+
+/* ==================== TELAS MUITO PEQUENAS (até 360px) ==================== */
+
+@media (max-width: 360px) {
+
+  .campo-com-botao .input-botao-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campo-com-botao .btn-editar {
+    width: 100%;
+  }
+
+  .botoes-finais {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-salvar,
+  .btn-cancelar {
+    width: 100%;
+    max-width: 280px;
+  }
 }

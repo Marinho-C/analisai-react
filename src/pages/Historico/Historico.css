@@ -1,13 +1,13 @@
-body{
+body {
     margin-bottom: 50px;
 }
 
-#title-historic{
+#title-historic {
     color: #fff;
 }
 
-#title-historic h2{
-    font-size: clamp(30px, 5vw, 25px); /*padrao de titulos*/
+#title-historic h2 {
+    font-size: clamp(22px, 5vw, 32px);
     padding-top: 50px;
     color: #ffffff;
     font-weight: 600;
@@ -17,9 +17,9 @@ body{
     margin-left: 100px;
 }
 
-#title-historic p{
-    font-size: clamp(2px, 2vw, 15px); /*padrao de titulos*/
-    
+#title-historic p {
+    font-size: clamp(12px, 2vw, 15px);
+
     color: #ffffff;
     font-weight: 200;
 
@@ -28,62 +28,148 @@ body{
     margin-left: 100px;
 }
 
-#listagem{
+#listagem {
     margin-right: 100px;
     margin-left: 100px;
     margin-top: 30px;
     padding: 30px;
     border-radius: 25px;
-    color:#fff;
+    color: #fff;
     background-color: #00ff734f;
     border: 2px solid #00361862;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-#box-plant{
+#box-plant {
     display: flex;
     align-items: center;
     gap: 20px;
-    max-width: 120%;
+    max-width: 100%;
 }
 
-#image-plant img{
+#image-plant img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 20px;
     border: 2px solid #009141;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
 }
 
-#info-plant{
+#info-plant {
     display: flex;
     flex-direction: column;
-    
-    max-width: 100%;
+
+    min-width: 0;
+    flex: 1;
 }
 
-#title-plant h3{
+#title-plant h3 {
     margin: 0;
     margin-bottom: 10px;
 }
 
-#description-plant p{
+#description-plant p {
     margin: 0;
     max-width: 100%;
+    word-break: break-word;
 }
 
-#button-seta img{
-    max-width: 12%;
+#button-seta img {
+    width: 20px;
+    height: auto;
 }
 
-#button-seta{
+#button-seta {
     margin-top: 20px;
-    max-width: 20%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-#button-seta p{
-    display: flex;
-    font-size: clamp(2px, 2vw, 8px);
+#button-seta p {
+    font-size: clamp(11px, 2vw, 13px);
     text-decoration: underline;
+    margin: 0;
+}
+
+/* ==================== TABLET (até 768px) ==================== */
+
+@media (max-width: 768px) {
+
+    #title-historic h2 {
+        margin-left: 40px;
+        padding-top: 40px;
+    }
+
+    #title-historic p {
+        margin-left: 40px;
+    }
+
+    #listagem {
+        margin-right: 40px;
+        margin-left: 40px;
+        padding: 20px;
+    }
+
+    #image-plant img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* ==================== CELULAR (até 480px) ==================== */
+
+@media (max-width: 480px) {
+
+    #title-historic h2 {
+        margin-left: 16px;
+        padding-top: 30px;
+        width: 95%;
+    }
+
+    #title-historic p {
+        margin-left: 16px;
+        width: 95%;
+    }
+
+    #listagem {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 20px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    #box-plant {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    #image-plant img {
+        width: 100%;
+        height: 180px;
+        border-radius: 14px;
+    }
+
+    #button-seta {
+        margin-top: 14px;
+    }
+}
+
+/* ==================== TELAS MUITO PEQUENAS (até 360px) ==================== */
+
+@media (max-width: 360px) {
+
+    #listagem {
+        margin-right: 8px;
+        margin-left: 8px;
+        padding: 12px;
+    }
+
+    #image-plant img {
+        height: 150px;
+    }
 }

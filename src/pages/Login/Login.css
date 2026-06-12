@@ -93,7 +93,7 @@ body {
     width: 100%;
 }
 
-#title h2 {
+.textos {
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -339,4 +339,41 @@ body {
         padding: 10px 20px;
         font-size: 13px;
     }
+}
+
+/* CAMPO SENHA COM OLHINHO */
+.caixa-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #009963;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.caixa-input #inputSenha {
+  flex: 1;
+  height: 45px;
+  border: none;
+  border-radius: 0;
+  padding-left: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+}
+
+.botao-olho {
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  color: #009963;
+  display: flex;
+  align-items: center;
+}
+
+.botao-olho:hover {
+  color: #04724b;
 }

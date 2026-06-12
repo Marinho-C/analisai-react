@@ -54,7 +54,7 @@
     font-style: italic;
 }
 
-body{
+body {
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(90deg, #000000, #009963);
 
@@ -69,6 +69,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 20px;
 }
 
 #logo {
@@ -79,55 +80,61 @@ body{
 }
 
 #logo img {
-    width: 120%; /* Ajuste aqui se quiser a logo maior ou menor */
+    width: 100%;
     max-width: 240px;
     margin-top: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #title {
-    text-align: center;
     display: flex;
-    align-items: center;
     width: 100%;
 }
 
 #title h2 {
     text-align: center;
     align-items: center;
-    display: flex;
     justify-content: center;
     font-weight: 800;
+    color: #ffffff;
+    width: 100%;
 }
 
 /* INPUTS */
 
-#inputs{
+#inputs {
     display: flex;
     flex-direction: column;
 
     align-items: center;
     justify-content: center;
+
+    padding: 0 20px;
+    width: 100%;
 }
 
 /* CAMPO TELEFONE */
 
-#telefone{
+#telefone {
     display: flex;
     flex-direction: column;
 
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 
     margin-bottom: 20px;
 }
 
-#telefone label{
+#telefone label {
     color: #ffffff;
     font-size: 14px;
 
     margin-bottom: 5px;
 }
 
-#inputTelefone{
+#inputTelefone {
     width: 100%;
     height: 45px;
 
@@ -143,7 +150,7 @@ body{
     outline: none;
 }
 
-#inputTelefone::placeholder{
+#inputTelefone::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 300;
@@ -153,23 +160,24 @@ body{
 
 /* CAMPO SENHA */
 
-#senha{
+#senha {
     display: flex;
     flex-direction: column;
 
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 
     margin-bottom: 20px;
 }
 
-#senha label{
+#senha label {
     color: #ffffff;
     font-size: 14px;
 
     margin-bottom: 5px;
 }
 
-#inputSenha{
+#inputSenha {
     width: 100%;
     height: 45px;
 
@@ -185,7 +193,7 @@ body{
     outline: none;
 }
 
-#inputSenha::placeholder{
+#inputSenha::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 300;
@@ -195,21 +203,23 @@ body{
 
 /* CHECKBOX */
 
-#verSenha{
+#verSenha {
     margin-top: 10px;
 }
 
 /* BOTÕES */
 
-#buttons{
+#buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 
     margin-top: 20px;
+    padding: 0 20px;
+    flex-wrap: wrap;
 }
 
-#entrar{
+#entrar {
     border: 2px solid #04724b;
     color: #ffffff;
     background-color: #04724b;
@@ -226,7 +236,7 @@ body{
     transition: 0.3s;
 }
 
-#cadastrar{
+#cadastrar {
     border: 2px solid #04724b;
     color: #ffffff;
     background-color: transparent;
@@ -244,6 +254,89 @@ body{
 }
 
 #entrar:hover,
-#cadastrar:hover{
+#cadastrar:hover {
     transform: scale(1.05);
+}
+
+/* ==================== TABLET (até 768px) ==================== */
+
+@media (max-width: 768px) {
+
+    #logo img {
+        max-width: 200px;
+        margin-top: 40px;
+    }
+
+    #telefone,
+    #senha {
+        max-width: 360px;
+    }
+}
+
+/* ==================== CELULAR (até 480px) ==================== */
+
+@media (max-width: 480px) {
+
+    #login-container {
+        padding: 0 16px;
+    }
+
+    #logo img {
+        max-width: 160px;
+        margin-top: 30px;
+    }
+
+    #title h2 {
+        font-size: 20px;
+    }
+
+    #inputs {
+        padding: 0 16px;
+    }
+
+    #telefone,
+    #senha {
+        max-width: 100%;
+    }
+
+    #inputTelefone,
+    #inputSenha {
+        font-size: 14px;
+        height: 42px;
+    }
+
+    #buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    #entrar,
+    #cadastrar {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+/* ==================== TELAS MUITO PEQUENAS (até 360px) ==================== */
+
+@media (max-width: 360px) {
+
+    #logo img {
+        max-width: 130px;
+    }
+
+    #inputTelefone,
+    #inputSenha {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    #entrar,
+    #cadastrar {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
 }

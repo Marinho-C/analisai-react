@@ -1,405 +1,148 @@
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Light.ttf') format('truetype');
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../src/assets/fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
-    font-weight: 700;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: linear-gradient(90deg, #000000, #00724a);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* ==================== CABEÇALHO ==================== */
-
-#cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border: 1px solid #ffffff;
-    border-radius: 30px;
-    margin: 20px;
-    padding: 0 10px;
-}
-
-#icon-menu,
-#icon-person {
-    width: 60px;
-    height: 60px;
-    padding: 15px;
-    cursor: pointer;
-}
-
-#logo {
-    width: clamp(220px, 18vw, 110px);
-    height: auto;
-}
-
-/* ==================== CONTEÚDO ==================== */
-
-#corpo h2 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-size: clamp(20px, 5vw, 25px);
-    padding-top: 80px;
-    color: #ffffff;
-    font-weight: 500;
-
-    width: 90%;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-#corpo h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    text-align: center;
-    font-size: clamp(14px, 4vw, 17px);
-    color: #ffffff;
-
-    width: 90%;
-    margin: 0 auto;
-}
-
-#selecionar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    margin: 40px auto;
-    gap: 20px;
-}
-
-#photo-selection {
-    width: clamp(80px, 18vw, 100px);
-    height: auto;
-    padding: 20px;
-}
-
-#arquivo {
-    background-color: #04724b;
-
-    width: 85%;
-    max-width: 300px;
-    min-height: 60px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 40px;
-    border: 2px solid #96ffda;
-
-    color: #ffffff;
-    text-align: center;
-
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(18px, 4vw, 25px);
-    font-weight: 400;
-
-    cursor: pointer;
-}
-
-#recomendacao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    margin: 40px;
-
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    text-align: center;
-}
-
 /* ==================== MENU LATERAL ==================== */
 
 #menu-lateral {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: min(80vw, 280px);
-    height: 100vh;
-
-    background-color: #1e3830;
-
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-
-    z-index: 1000;
-
-    display: flex;
-    flex-direction: column;
-
-    font-family: 'Montserrat', sans-serif;
-
-    transition: transform 0.4s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(80vw, 280px);
+  height: 100vh;
+  background-color: #1e3830;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.4s ease-in-out;
 }
 
 .menu-fechado {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .menu-aberto {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
-.menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* OVERLAY */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
 
-    padding: 30px 20px 20px;
+/* HEADER */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px 20px;
 }
 
 .menu-logo {
-    width: 110px;
-    height: auto;
+  width: 110px;
+  height: auto;
 }
 
 .menu-fechar {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
+/* TÍTULO */
 .menu-titulo {
-    color: #8fa09a;
-    font-size: 14px;
-    font-weight: 400;
-
-    padding-left: 25px;
-    margin-bottom: 15px;
+  color: #8fa09a;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 25px;
+  margin-bottom: 15px;
 }
 
+/* LISTA */
 .menu-opcoes {
-    list-style: none;
-    padding: 0 15px;
+  list-style: none;
+  padding: 0 15px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .opcao-item {
-    display: flex;
-    align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
 
-    gap: 15px;
+/* LINK — toda a área é clicável */
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
 
-    padding: 12px 15px;
-    margin-bottom: 8px;
+.link-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
 
-    border-radius: 10px;
+/* ÍCONE */
+.menu-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  pointer-events: none;
+  flex-shrink: 0;
+}
 
-    transition: background 0.2s;
+/* TEXTO */
+.link-wrapper span {
+  pointer-events: none;
+}
+
+/* ITEM ATIVO */
+.opcao-item.ativa .link-wrapper {
+  background-color: #ffffff;
+  border-radius: 10px 0 0 10px;
+  margin-right: -15px;
+  color: #1e3830;
+  font-weight: 600;
 }
 
 .opcao-item:hover {
-    background: rgba(255,255,255,0.08);
+  background: none;
 }
 
-.opcao-item a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.opcao-item.ativa {
-    background-color: #ffffff;
-    border-radius: 10px 0 0 10px;
-    margin-right: -15px;
-}
-
-.opcao-item.ativa a {
-    color: #1e3830;
-    font-weight: 600;
-}
-
-.menu-icon {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-}
-
+/* RODAPÉ */
 .menu-rodape {
-    margin-top: auto;
-    padding: 0 15px 30px;
+  margin-top: auto;
+  padding: 0 15px 30px;
 }
 
 .menu-divisor {
-    border: 0;
-    border-top: 1px solid #334e45;
-    margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #334e45;
+  margin-bottom: 15px;
 }
 
-.opcao-item.sair a {
-    color: #a0b0ab;
+/* SAIR */
+.link-sair {
+  color: #a0b0ab;
 }
 
-/* ==================== CONFIRMAÇÃO ==================== */
-
-#container-confirmacao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 20px;
-    width: 100%;
-}
-
-#container-confirmacao h2 {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.preview-box {
-    width: 90%;
-    max-width: 500px;
-    max-height: 350px;
-
-    border-radius: 12px;
-    overflow: hidden;
-
-    padding: 20px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-#preview-foto {
-    width: 100%;
-    height: auto;
-
-    max-height: 350px;
-
-    display: block;
-    object-fit: contain;
-}
-
-.botoes-confirmacao {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 15px;
-
-    width: 90%;
-    justify-content: center;
-}
-
-.botoes-confirmacao button {
-    flex: 1;
-    min-width: 140px;
-
-    padding: 12px 24px;
-
-    font-size: 16px;
-
-    border: none;
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-#btn-confirmar {
-    background-color: #04724b;
-    color: white;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.76);
-}
-
-#btn-confirmar:hover {
-    background-color: #1b5e20;
-}
-
-#btn-alterar {
-    background: transparent;
-    color: white;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.76);
-}
-
-#btn-alterar:hover {
-    background-color: rgba(255,255,255,0.15);
-}
-
-/* ==================== TABLET ==================== */
-
-@media (max-width: 768px) {
-
-    #cabecalho {
-        margin: 15px;
-    }
-
-    #corpo h2 {
-        padding-top: 50px;
-    }
-
-    #recomendacao {
-        margin: 20px;
-    }
-
-    .opcao-item a {
-        font-size: 14px;
-    }
-}
-
-/* ==================== CELULAR ==================== */
-
-@media (max-width: 480px) {
-
-    #logo {
-        width: 90px;
-    }
-
-    #icon-menu,
-    #icon-person {
-        width: 18px;
-        height: 18px;
-        padding: 12px;
-    }
-
-    #arquivo {
-        min-height: 55px;
-        font-size: 18px;
-    }
-
-    #menu-lateral {
-        width: 85vw;
-    }
-
-    .botoes-confirmacao {
-        flex-direction: column;
-    }
-
-    .botoes-confirmacao button {
-        width: 100%;
-    }
+.link-sair:hover {
+  background: rgba(255, 255, 255, 0.05);
 }

@@ -1,5 +1,3 @@
-/* ==================== MENU LATERAL ==================== */
-
 #menu-lateral {
   position: fixed;
   top: 0;
@@ -23,7 +21,6 @@
   transform: translateX(0);
 }
 
-/* OVERLAY */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -34,7 +31,6 @@
   z-index: 999;
 }
 
-/* HEADER */
 .menu-header {
   display: flex;
   justify-content: space-between;
@@ -53,7 +49,6 @@
   cursor: pointer;
 }
 
-/* TÍTULO */
 .menu-titulo {
   color: #8fa09a;
   font-size: 14px;
@@ -62,7 +57,6 @@
   margin-bottom: 15px;
 }
 
-/* LISTA */
 .menu-opcoes {
   list-style: none;
   padding: 0 15px;
@@ -79,7 +73,7 @@
   width: 100%;
 }
 
-/* LINK — toda a área é clicável */
+/* AQUI O TREM FEZ A ÁREA FICAR toda clicável */
 .link-wrapper {
   display: flex;
   align-items: center;
@@ -99,7 +93,6 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ÍCONE */
 .menu-icon {
   width: 22px;
   height: 22px;
@@ -113,7 +106,6 @@
   pointer-events: none;
 }
 
-/* ITEM ATIVO */
 .opcao-item.ativa .link-wrapper {
   background-color: #ffffff;
   border-radius: 10px 0 0 10px;
@@ -126,7 +118,6 @@
   background: none;
 }
 
-/* RODAPÉ */
 .menu-rodape {
   margin-top: auto;
   padding: 0 15px 30px;

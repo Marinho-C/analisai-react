@@ -1,15 +1,42 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Importado para fazer o redirecionamento
 import MenuLateral from "../MenuLateral/MenuLateral"; 
+import CardPlanta from "../../components/CardPlanta"; // CORRIGIDO: Agora sobe 2 níveis e entra em components
+
 import iconMenu from "../../assets/images/icon-menu.png";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
+import fotoTeste from "../../assets/images/fototeste.jpeg"; // CORRIGIDO: Caminho relativo correto para o assets
 
 import "../Home/Home.css"; 
 import "./Historico.css";
 
 export default function Historico() {
   const [menuAberto, setMenuAberto] = useState(false); 
+
+  // Exemplo de Array simulando os dados que viriam do banco de dados futuramente
+  const historicoPesquisas = [
+    {
+      id: 1,
+      nome: "Nome da Planta 1",
+      imagem: fotoTeste,
+      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
+      rotaLink: "/resultado/1"
+    },
+    {
+      id: 2,
+      nome: "Nome da Planta 2",
+      imagem: fotoTeste,
+      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
+      rotaLink: "/resultado/2"
+    },
+    {
+      id: 3,
+      nome: "Nome da Planta 3",
+      imagem: fotoTeste,
+      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
+      rotaLink: "/resultado/3"
+    }
+  ];
 
   return (
     <>
@@ -21,126 +48,34 @@ export default function Historico() {
             alt="Menu"
             onClick={() => setMenuAberto(true)} 
           />
-
           <img id="logo" src={logo} alt="Logo" />
-
           <img id="icon-person" src={iconPerson} alt="Perfil" />
         </div>
       </header>
+
       <main>
         <div id="title-historic">
           <h2>Histórico</h2>
-          <p>Confira seu historico de pesquisa</p>
+          <p>Confira seu histórico de pesquisa</p>
         </div>
 
-        <div id="listagem">
-          <Link to="/nova-pagina" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <div id="box-plant">
-            <div id="image-plant">
-              <img src="src/assets/images/fototeste.jpeg" alt="Planta" />
-            </div>
+        {/* CONTAINER DA LISTAGEM (ÚNICO) */}
+        <div className="listagem-container">
+          
+          {/* O .map percorre a lista e cria um componente para cada item automaticamente */}
+          {historicoPesquisas.map((planta) => (
+            <CardPlanta 
+              key={planta.id} // O React exige uma chave única para renderizações em lista
+              imagem={planta.imagem}
+              nome={planta.nome}
+              descricao={planta.descricao}
+              rotaLink={planta.rotaLink}
+            />
+          ))}
 
-            <div id="info-plant">
-              <div id="title-plant">
-                <h3>Nome da planta</h3>
-              </div>
-
-              <div id="description-plant">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae...
-                </p>
-              </div>
-              
-              {/* Seta com ação de redirecionamento */}
-              <div id="button-seta"> 
-                  <img src="src/assets/images/icon-seta.png" alt="Avançar" />
-                
-                <p>
-                  Saiba mais
-                </p>
-              </div>
-              
-            </div>
-          </div>
-          </Link>
-        </div>
-
-        <div id="listagem">
-          <Link to="/nova-pagina" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <div id="box-plant">
-            <div id="image-plant">
-              <img src="src/assets/images/fototeste.jpeg" alt="Planta" />
-            </div>
-
-            <div id="info-plant">
-              <div id="title-plant">
-                <h3>Nome da planta</h3>
-              </div>
-
-              <div id="description-plant">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae...
-                </p>
-              </div>
-              
-              {/* Seta com ação de redirecionamento */}
-              <div id="button-seta"> 
-                  <img src="src/assets/images/icon-seta.png" alt="Avançar" />
-                
-                <p>
-                  Saiba mais
-                </p>
-              </div>
-              
-            </div>
-          </div>
-          </Link>
-        </div>
-
-        <div id="listagem">
-          <Link to="/nova-pagina" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <div id="box-plant">
-            <div id="image-plant">
-              <img src="src/assets/images/fototeste.jpeg" alt="Planta" />
-            </div>
-
-            <div id="info-plant">
-              <div id="title-plant">
-                <h3>Nome da planta</h3>
-              </div>
-
-              <div id="description-plant">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora, porro perferendis suscipit quis pariatur eligendi
-                  neque recusandae eius quae...
-                </p>
-              </div>
-              
-              {/* Seta com ação de redirecionamento */}
-              <div id="button-seta"> 
-                  <img src="src/assets/images/icon-seta.png" alt="Avançar" />
-                
-                <p>
-                  Saiba mais
-                </p>
-              </div>
-              
-            </div>
-          </div>
-          </Link>
         </div>
       </main>
+
       <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
     </>
   );

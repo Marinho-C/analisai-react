@@ -276,85 +276,93 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
+    margin: 40px auto;
     gap: 20px;
     width: 100%;
 }
 
 #container-confirmacao h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: clamp(18px, 4vw, 25px); /* Fluido igual ao H2 do corpo */
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 500;
+    
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .preview-box {
     width: 90%;
     max-width: 500px;
-    max-height: 350px;
+    height: clamp(250px, 45vh, 400px); /* Altura elástica baseada na tela do dispositivo */
 
-    border-radius: 12px;
+    border-radius: 20px;
+    border: 2px solid #009963; /* Borda idêntica aos inputs do seu app */
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo sutil para destacar imagens transparentes */
     overflow: hidden;
 
-    padding: 20px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
 }
 
 #preview-foto {
     width: 100%;
-    height: auto;
-
-    max-height: 350px;
-
+    height: 100%; /* Ocupa todo o container elástico */
     display: block;
-    object-fit: contain;
+    object-fit: contain; /* Evita que a folha/planta sofra distorções em qualquer tela */
 }
 
 .botoes-confirmacao {
     display: flex;
     flex-wrap: wrap;
-
     gap: 15px;
 
     width: 90%;
+    max-width: 500px; /* Alinha o limite dos botões perfeitamente com a foto */
     justify-content: center;
 }
 
 .botoes-confirmacao button {
     flex: 1;
     min-width: 140px;
+    min-height: 52px; /* Garante área de toque confortável no mobile */
 
     padding: 12px 24px;
-
-    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(14px, 3.5vw, 16px); /* Texto se adapta em telas pequenas */
+    font-weight: 400;
 
     border: none;
-    border-radius: 8px;
-
+    border-radius: 20px; /* Borda arredondada idêntica ao botão #arquivo */
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #btn-confirmar {
     background-color: #04724b;
     color: white;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.76);
+    border: 2px solid #96ffda; /* Destaque luminoso sutil */
 }
 
 #btn-confirmar:hover {
-    background-color: #1b5e20;
+    background-color: #035a3b;
+    transform: scale(1.03); /* Efeito suave de crescimento igual aos outros botões */
 }
 
 #btn-alterar {
     background: transparent;
     color: white;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.76);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 #btn-alterar:hover {
-    background-color: rgba(255,255,255,0.15);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: scale(1.03);
 }
 
 /* ==================== TABLET (até 768px) ==================== */

@@ -377,3 +377,32 @@ body {
 .botao-olho:hover {
   color: #04724b;
 }
+
+/* LEMBRE DE MIM / ESQUECEU A SENHA */
+#login-container .recall-forget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: -15px 5 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.recall-forget label {
+  color: white;
+  cursor: pointer;
+}
+
+.recall-forget input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.recall-forget a {
+  color: white;
+  text-decoration: none;
+}
+
+.recall-forget a:hover {
+  text-decoration: underline;
+}

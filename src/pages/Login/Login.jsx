@@ -7,9 +7,15 @@ import logo from "../../assets/images/Logo-AnalisaAI.png";
 export default function Login() {
   const navigate = useNavigate();
   const [ver, setVer] = useState(false);
+  const [telefone, setTelefone] = useState("");
+  const [password, setPassword] = useState("");
 
   function entrar() {
     navigate("/home");
+  }
+
+  function cadastrar() {
+    navigate("/cadastro");
   }
 
   return (
@@ -30,6 +36,8 @@ export default function Login() {
               id="inputTelefone"
               type="tel"
               placeholder="Digite seu telefone"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
             />
           </div>
 
@@ -40,6 +48,8 @@ export default function Login() {
                 id="inputSenha"
                 type={ver ? "text" : "password"}
                 placeholder="Digite sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -52,11 +62,19 @@ export default function Login() {
           </div>
         </div>
 
+        <div className="recall-forget">
+          <label>
+            <input type="checkbox" />
+            Lembre de mim
+          </label>
+          <a href="#">Esqueceu a senha?</a>
+        </div>
+
         <div id="buttons">
           <button id="entrar" onClick={entrar}>
             Entrar
           </button>
-          <button id="cadastrar">
+          <button id="cadastrar" onClick={cadastrar}>
             Cadastrar-se
           </button>
         </div>

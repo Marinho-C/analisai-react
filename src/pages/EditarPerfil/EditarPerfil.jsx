@@ -60,18 +60,18 @@ export default function EditarPerfil() {
                 </div>
               </div>
 
-              {/* MUNICÍPIO/CIDADE */}
+              {/* ESTADO */}
               <div className="campo-sem-botao">
-                <label htmlFor="cidade">Município/Cidade</label>
+                <label htmlFor="estado">Estado</label>
                 <select
-                  id="cidade"
-                  value={cidadeSelecionada}
-                  onChange={(e) => setCidadeSelecionada(e.target.value)}
+                  id="estado"
+                  value={estadoSelecionado}
+                  onChange={(e) => setEstadoSelecionado(e.target.value)}
                 >
-                  <option value="">Selecione um município</option>
-                  {cidades.map((cidade) => (
-                    <option key={cidade.id} value={cidade.nome}>
-                      {cidade.nome}
+                  <option value="">Selecione um estado</option>
+                  {estados.map((estado) => (
+                    <option key={estado.id} value={estado.sigla}>
+                      {estado.nome}
                     </option>
                   ))}
                 </select>
@@ -98,18 +98,18 @@ export default function EditarPerfil() {
                 </div>
               </div>
 
-              {/* ESTADO */}
+              {/* MUNICÍPIO/CIDADE */}
               <div className="campo-sem-botao">
-                <label htmlFor="estado">Estado</label>
+                <label htmlFor="cidade">Município/Cidade</label>
                 <select
-                  id="estado"
-                  value={estadoSelecionado}
-                  onChange={(e) => setEstadoSelecionado(e.target.value)}
+                  id="cidade"
+                  value={cidadeSelecionada}
+                  onChange={(e) => setCidadeSelecionada(e.target.value)}
                 >
-                  <option value="">Selecione um estado</option>
-                  {estados.map((estado) => (
-                    <option key={estado.id} value={estado.sigla}>
-                      {estado.nome}
+                  <option value="">Selecione um município</option>
+                  {cidades.map((cidade) => (
+                    <option key={cidade.id} value={cidade.nome}>
+                      {cidade.nome}
                     </option>
                   ))}
                 </select>

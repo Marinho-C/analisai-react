@@ -1,35 +1,67 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react"; // Adicionado o useState corretamente
-import "./Resultado.css"; 
-import MenuLateral from "../MenuLateral/MenuLateral"; 
+import { useEffect, useState } from "react";
+import "./Resultado.css";
+import MenuLateral from "../MenuLateral/MenuLateral";
 
 import iconMenu from "../../assets/images/icon-menu.png";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
+// IMPORTANTE: Importando a foto de teste para usá-la no nosso banco fictício (mock)
+import fotoTeste from "../../assets/images/fototeste.jpeg";
 
 import "../Home/Home.css";
 
 export default function Resultado() {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const navigate = useNavigate();
-  
-  // CORRIGIDO: Adicionado o estado para o Menu Lateral não crashar a página
-  const [menuAberto, setMenuAberto] = useState(false); 
+
+  const [menuAberto, setMenuAberto] = useState(false);
   const [planta, setPlanta] = useState(null);
 
   useEffect(() => {
+    // ADICIONADO: Agora cada planta do mock também tem os campos imagem e descricao
     const plantasMockadas = [
-      { id: 1, nome: "Samambaia", status: "Saudável", rega: "3x por semana", cuidado: "Evitar sol direto." },
-      { id: 2, nome: "Suculenta", status: "Excesso de Água", rega: "1x a cada 15 dias", cuidado: "Mudar para vaso com melhor drenagem." },
-      { id: 3, nome: "Manjericão", status: "Presença de Pragas", rega: "Diária", cuidado: "Aplicar óleo de Neem nas folhas." }
+      {
+        id: 1,
+        imagem: fotoTeste,
+        nome_popular: "Nome popular",
+        descricao:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis.",
+        especieTox: "Nome das especies",
+        riscos: "Saudável",
+        sintomas: "3x por semana",
+        ações: "Evitar sol direto.",
+      },
+      {
+        id: 2,
+        imagem: fotoTeste,
+        nome_popular: "Nome popular",
+        descricao:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis.",
+        especieTox: "Nome das especies",
+        riscos: "Saudável",
+        sintomas: "3x por semana",
+        ações: "Evitar sol direto.",
+      },
+      {
+        id: 3,
+        imagem: fotoTeste,
+        nome_popular: "Nome popular",
+        descricao:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis.",
+        especieTox: "Nome das especies",
+        riscos: "Saudável",
+        sintomas: "3x por semana",
+        ações: "Evitar sol direto.",
+      },
     ];
 
-    // CORRIGIDO: Verificação mais segura (compara convertendo ambos para string para evitar falhas de tipo)
-    const plantaEncontrada = plantasMockadas.find(p => String(p.id) === String(id));
+    const plantaEncontrada = plantasMockadas.find(
+      (p) => String(p.id) === String(id),
+    );
     setPlanta(plantaEncontrada);
   }, [id]);
 
-  // Se o ID não for 1, 2 ou 3 (dados do mock), avisa o usuário em vez de travar no "Carregando"
   if (!planta) {
     return (
       <div style={{ color: "#fff", padding: "20px", textAlign: "center" }}>
@@ -40,50 +72,77 @@ export default function Resultado() {
   }
 
   return (
-    <div id="resultado-container">
-      <header>
-        <div id="cabecalho">
-          <img
-            id="icon-menu"
-            src={iconMenu}
-            alt="Menu"
-            onClick={() => setMenuAberto(true)} // Agora funciona porque criamos o estado!
-          />
-          <img id="logo" src={logo} alt="Logo" onClick={() => navigate("/historico")} style={{cursor: 'pointer'}} />
-          <img id="icon-person" src={iconPerson} alt="Perfil" />
-        </div>
-      </header>
+  <div id="resultado-container">
+    <header>
+      <div id="cabecalho">
+        <img
+          id="icon-menu"
+          src={iconMenu}
+          alt="Menu"
+          onClick={() => setMenuAberto(true)}
+        />
+        <img
+          id="logo"
+          src={logo}
+          alt="Logo"
+          onClick={() => navigate("/historico")}
+          style={{ cursor: "pointer" }}
+        />
+        <img id="icon-person" src={iconPerson} alt="Perfil" />
+      </div>
+    </header>
 
-      <main id="detalhes-planta" style={{ padding: "20px", color: "#fff" }}>
-        <button onClick={() => navigate(-1)} style={{ marginBottom: "20px", cursor: "pointer" }}>
-          ⬅ Voltar ao Histórico
-        </button>
+    <main id="detalhes-planta">
+      <div className="top-navigation">
+        <button className="voltar" onClick={() => navigate(-1)}>Voltar ao Histórico</button>
+        <h2>Detalhes da Planta</h2>
+      </div>
 
-        <h1>Análise de Detalhes (ID: {id})</h1>
-        
-        <div className="info-bloco">
-          <h3>Planta Analisada:</h3>
-          <p>{planta.nome}</p>
-        </div>
-
-        <div className="info-bloco">
-          <h3>Status de Saúde:</h3>
-          <span>{planta.status}</span>
-        </div>
-
-        <div className="info-bloco">
-          <h3>Frequência de Rega Recomendada:</h3>
-          <p>{planta.rega}</p>
+      <div className="container-description">
+        {/* LADO ESQUERDO: IMAGEM */}
+        <div className="resultado-imagem">
+          <img src={planta.imagem} alt={planta.nome_popular} />
         </div>
 
-        <div className="info-bloco">
-          <h3>Cuidados Necessários:</h3>
-          <p>{planta.cuidado}</p>
-        </div>
-      </main>
+        {/* CENTRO: COLUNA 1 */}
+        <div className="info-box box1">
+          <div className="info-group">
+            <h3>Nome popular</h3>
+            <p>{planta.nome_popular}</p>
+          </div>
 
-      {/* Renderiza o menu lateral de verdade na tela */}
-      <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
-    </div>
-  );
+          <div className="info-group">
+            <h3>Descrição</h3>
+            <p>{planta.descricao}</p>
+          </div>
+
+          <div className="info-group">
+            <h3>Espécies suscetíveis à intoxicação</h3>
+            <p>{planta.especieTox}</p>
+          </div>
+        </div>
+
+        {/* DIREITA: COLUNA 2 */}
+        <div className="info-box box2">
+          <div className="info-group">
+            <h3>Riscos</h3> {/* Corrigido o título fixo */}
+            <p>{planta.riscos}</p>
+          </div>
+
+          <div className="info-group">
+            <h3>Sintomas</h3> {/* Corrigido o título fixo */}
+            <p>{planta.sintomas}</p>
+          </div>
+
+          <div className="info-group">
+            <h3>Ações recomendadas</h3>
+            <p>{planta.ações}</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
+  </div>
+);
 }

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./Home.css";
 
 // Importação dos componentes
 import MenuLateral from "../MenuLateral/MenuLateral";
 import Loading from "../../components/Loading";
 
+// Imagens do projeto
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconMenu from "../../assets/images/icon-menu.png";
 import iconPerson from "../../assets/images/icon-person.png";
@@ -13,9 +15,9 @@ import iconSelecionar from "../../assets/images/icon-selecionar.png";
 export default function Home() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [imagemPreview, setImagemPreview] = useState(null);
-  
-  // NOVO: Estado para controlar a exibição do Spinner de carregamento
   const [carregando, setCarregando] = useState(false);
+
+  const navigate = useNavigate();
 
   const aoSelecionarFoto = (event) => {
     const arquivo = event.target.files[0];
@@ -29,18 +31,21 @@ export default function Home() {
     setImagemPreview(null);
   };
 
-  // MODIFICADO: Função ativa o loading e simula o envio
   const confirmarEnvio = () => {
-    setCarregando(true); // Ativa a tela de carregamento imediatamente
+    setCarregando(true); // Ativa o spinner de carregamento
 
-    // Simulando uma espera de 3 segundos (tempo que a IA levaria para responder)
+    // Simula a requisição ao Back-end durando exatamente 2 segundos
     setTimeout(() => {
-      setCarregando(false); // Desativa o loading
-      alert("Planta analisada com sucesso pelo AnalisaAI!");
-      
-      // Aqui, futuramente, você usaria o useNavigate() para mandar o usuário 
-      // direto para a página de resultados daquela análise.
-    }, 3000);
+      setCarregando(false); 
+
+      // ID simulado que viria do banco de dados após salvar a análise
+      const idDaAnalise = 1;
+
+      // ATUALIZADO: Agora passamos a imagemPreview dentro do objeto state!
+      navigate(`/retorno/${idDaAnalise}`, { 
+        state: { imagemUrl: imagemPreview } 
+      });
+    }, 2000);
   };
 
   return (
@@ -53,9 +58,7 @@ export default function Home() {
             alt="Menu"
             onClick={() => setMenuAberto(true)}
           />
-
           <img id="logo" src={logo} alt="Logo" />
-
           <img id="icon-person" src={iconPerson} alt="Perfil" />
         </div>
       </header>
@@ -65,11 +68,9 @@ export default function Home() {
       <main>
         <div id="corpo">
           
-          {/* 1. SE estiver carregando, mostra APENAS o componente de Loading */}
           {carregando ? (
             <Loading />
           ) : (
-            /* 2. CASO CONTRÁRIO (não está carregando), segue o fluxo normal das suas duas telas */
             <>
               {!imagemPreview ? (
                 <div id="container-selecao">

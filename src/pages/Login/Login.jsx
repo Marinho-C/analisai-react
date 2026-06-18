@@ -4,6 +4,7 @@ import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 
+
 export default function Login() {
   const navigate = useNavigate();
   const [ver, setVer] = useState(false);

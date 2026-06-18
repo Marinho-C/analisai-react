@@ -5,13 +5,13 @@ import "../Admin/Admin.css"
 export default function Admin() {
   const navigate = useNavigate();
 
-    function cadastroAdmin() {
-    navigate("/cadastroAdmin");  // era "/CadastroAdmin/cadastroAdmin"
-}
+  function cadastroAdmin() {
+    navigate("/cadastroAdmin");
+  }
 
-function listUsers() {
-    navigate("/listUsers");  // era "/ListUsers/listUsers"
-}
+  function listUsers() {        // ← adicione isso de volta
+    navigate("/listUsers");
+  }
 
   return (
     <div className="admin-container">
@@ -721,11 +721,12 @@ function listUsers() {
           </div>
         </div>
 
-        {/*<div className="Functions-Admin"*/}
-            {/*<button>Cadastrar novos administradores</button>
-            <button onClick={cadastroAdmin}>Visualizar usuários</button>
-        </div>*/}
-      </main>
+
+        <div className="Functions-Admin">
+            <button onClick={cadastroAdmin} >Cadastrar novos administradores</button>
+            <button onClick={listUsers}>Visualizar usuários</button>
+        </div>
+       </main>
     </div>
   );
 }

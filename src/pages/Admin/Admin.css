@@ -14,12 +14,12 @@
   padding-bottom: 20px;
 }
 
-.btn-logout {
-  background-color: #006432;
+#btn-logout {
+  background-color: #ff1100a1;
   color: #fff;
   border: 1px solid #4caf50;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s;
@@ -42,9 +42,12 @@
 
 .admin-card {
   background-color: #0b3d26;
-  padding: 20px;
   border-radius: 8px;
   border: 1px solid #14532d;
+  height: 500px;
+  overflow: scroll;
+  scrollbar-color: #00E676 #14532d; /* cor do indicador / cor do fundo da barra */
+  scrollbar-width: auto;
 }
 
 .admin-card h3 {
@@ -63,19 +66,18 @@
 .Functions-Admin{
     align-items: center;
     text-align: center;
-    margin-top: 50px;
 }
 
 .Functions-Admin button{
     background-color: #006432;
     color: #fff;
     border: 1px solid #4caf50;
-    padding: 20px;
-    font-weight: 600;
+    padding: 10px;
+    font-weight: 500;
     border-radius: 50px;
-    margin: 30px;
     font-family: 'Montserrat';
     cursor: pointer;
+    margin: 10px;
 }
 
 .Functions-Admin button:hover{
@@ -96,6 +98,38 @@
     background-color: #023b1e;
 }
 
+.element{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: left;
+}
+
+.title{
+    top: 0;
+    z-index: 10px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    background-color: #013018;
+    flex-direction: column;
+}
+
+
+.title h3{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.title p{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+td{
+    padding-top: 12px;
+}
 /* Responsividade simples para telas menores */
 @media (max-width: 768px) {
   .admin-grid {

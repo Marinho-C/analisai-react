@@ -70,7 +70,7 @@ export default function Login() {
             <input type="checkbox" />
             Lembre de mim
           </label>
-          <a href="#">Esqueceu a senha?</a>
+          {/*<a href="#">Esqueceu a senha?</a>*/} 
         </div>
 
         <div id="buttons">

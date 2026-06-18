@@ -6,7 +6,7 @@ export default function Admin() {
   const navigate = useNavigate();
 
     function cadastroAdmin(){
-        navigate("/CadastroAdmin/cadastroAdmin");
+        navigate("/cadastroAdmin");
     }
 
   return (
@@ -36,10 +36,10 @@ export default function Admin() {
         </div>
 
         <div className="Functions-Admin">
-            <button>Cadastrar novos administradores</button>
-            <button onClick={cadastroAdmin}>Visualizar usuários</button>
+            <button onClick={cadastroAdmin} >Cadastrar novos administradores</button>
+            <button>Visualizar usuários</button>
         </div>
-      </main>
+      </main> 
     </div>
   );
 }

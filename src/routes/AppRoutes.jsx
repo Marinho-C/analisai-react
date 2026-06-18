@@ -10,6 +10,7 @@ import Cadastrar from "../pages/Cadastro/Cadastrar";
 import Propriedade from "../pages/Cadastro/Propriedade";
 import Admin from "../pages/Admin/Admin";
 import CadastroAdmin from "../pages/Admin/CadastroAdmin/CadastroAdmin"
+import ListUsers from "../pages/Admin/ListUsers/ListUsers"
 
 export default function AppRoutes() {
   return (
@@ -32,6 +33,7 @@ export default function AppRoutes() {
 
       <Route path="/admin" element={<Admin />} />
       <Route path="/cadastroAdmin" element={<CadastroAdmin />} />
+      <Route path="/listUsers" element={<ListUsers />} />
     </Routes>
   );
 }

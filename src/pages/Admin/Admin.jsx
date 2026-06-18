@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./Admin.css"; 
+import "../Admin/Admin.css"
 
 export default function Admin() {
   const navigate = useNavigate();
 
-    function cadastroAdmin(){
-        navigate("/CadastroAdmin/cadastroAdmin");
-    }
+    function cadastroAdmin() {
+    navigate("/cadastroAdmin");  // era "/CadastroAdmin/cadastroAdmin"
+}
+
+function listUsers() {
+    navigate("/listUsers");  // era "/ListUsers/listUsers"
+}
 
   return (
     <div className="admin-container">
@@ -15,11 +19,9 @@ export default function Admin() {
         <h2>Painel de Controle - Administrador</h2>
 
         <div className="Functions-Admin">
-            <button>Cadastrar novos administradores</button>
-            <button onClick={cadastroAdmin}>Visualizar usuários</button>
-            <button id="btn-logout" onClick={() => navigate("/")}>
-          Sair
-        </button>
+            <button onClick={cadastroAdmin}>Cadastrar novos administradores</button>
+            <button onClick={listUsers}>Visualizar usuários</button>
+            <button id="btn-logout" onClick={() => navigate("/")}>Sair</button>
         </div>
       </header>
 

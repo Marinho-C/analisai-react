@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./Cadastrar.css";
 
-// Componente simples criado internamente para a tela não quebrar
 function BarraProgresso({ valor }) {
   return (
     <div style={{ width: "100%", backgroundColor: "#e0e0e0", borderRadius: "8px", height: "10px", marginBottom: "20px" }}>
@@ -17,6 +15,7 @@ export default function Cadastrar() {
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
   function avancar() {

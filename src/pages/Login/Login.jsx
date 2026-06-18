@@ -12,7 +12,9 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   function entrar() {
-    navigate("/home");
+    if(telefone === "0000" && password === "0000"){
+      navigate("/admin");
+    } else {navigate("/home"); }
   }
 
   function cadastrar() {

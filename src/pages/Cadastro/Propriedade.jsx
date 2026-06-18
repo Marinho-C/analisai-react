@@ -2,7 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Propriedade.css";
 
-
+// Componente simples criado internamente para a tela não quebrar
+function BarraProgresso({ valor }) {
+  return (
+    <div style={{ width: "100%", backgroundColor: "#e0e0e0", borderRadius: "8px", height: "10px", marginBottom: "20px" }}>
+      <div style={{ width: `${valor}%`, backgroundColor: "#4caf50", height: "100%", borderRadius: "8px", transition: "width 0.3s" }}></div>
+    </div>
+  );
+}
 
 export default function Propriedade() {
   const navigate = useNavigate();

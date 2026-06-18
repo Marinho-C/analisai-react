@@ -1,0 +1,104 @@
+.admin-container {
+  background-color: #042918;
+  min-height: 100vh;
+  color: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #14532d;
+  padding-bottom: 20px;
+}
+
+.btn-logout {
+  background-color: #006432;
+  color: #fff;
+  border: 1px solid #4caf50;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #005030;
+}
+
+.admin-main {
+  margin-top: 40px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.admin-card {
+  background-color: #0b3d26;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #14532d;
+}
+
+.admin-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #a7f3d0;
+}
+
+.card-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #4caf50;
+  margin: 10px 0 0 0;
+}
+
+.Functions-Admin{
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.Functions-Admin button{
+    background-color: #006432;
+    color: #fff;
+    border: 1px solid #4caf50;
+    padding: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    margin: 30px;
+    font-family: 'Montserrat';
+    cursor: pointer;
+}
+
+.Functions-Admin button:hover{
+    background-color: #013018;
+}
+
+.buttonDashboard{
+    background-color: #006432;
+    color: #fff;
+    border: 1px solid #4caf50;
+    font-family: 'Montserrat';
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.buttonDashboard:hover{
+    background-color: #023b1e;
+}
+
+/* Responsividade simples para telas menores */
+@media (max-width: 768px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}

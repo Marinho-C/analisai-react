@@ -20,7 +20,14 @@ export default function Cadastrar() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
   function avancar() {
-    navigate("/propriedade");
+    navigate("/propriedade",{
+      state:{
+        nome,
+        telefone,
+        senha,
+        confirmarSenha
+      }
+    });
   }
 
   return (

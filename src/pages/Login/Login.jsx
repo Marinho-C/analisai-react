@@ -3,19 +3,31 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
-
+import useAuthStore  from "../../stores/authStore";
 
 export default function Login() {
   const navigate = useNavigate();
   const [ver, setVer] = useState(false);
   const [telefone, setTelefone] = useState("");
   const [password, setPassword] = useState("");
+  const { user, login, loading } = useAuthStore();
 
-  function entrar() {
-    if(telefone === "0000" && password === "0000"){
-      navigate("/admin");
-    } else {navigate("/home"); }
-  }
+  const entrar = async (e) => {
+    e.preventDefault();
+    try {
+      await login(telefone, password);
+
+      if (user) {
+        if (user.is_admin) {
+          navigate("/admin");
+        } else {
+          navigate("/home");
+        }
+      }
+    } catch (err) {
+      alert("Erro no login");
+    }
+  };
 
   function cadastrar() {
     navigate("/cadastro");
@@ -70,7 +82,7 @@ export default function Login() {
             <input type="checkbox" />
             Lembre de mim
           </label>
-          {/*<a href="#">Esqueceu a senha?</a>*/} 
+          {/*<a href="#">Esqueceu a senha?</a>*/}
         </div>
 
         <div id="buttons">

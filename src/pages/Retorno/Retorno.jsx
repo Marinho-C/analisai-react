@@ -12,12 +12,13 @@ import fotoTeste from "../../assets/images/fototeste.jpeg";
 import "../Home/Home.css";
 import "./Retorno.css"; // Lembre-se de colocar o @import "../Resultado/Resultado.css"; no seu CSS
 import "../Resultado/Resultado.css";
+import useAnalysisStore from "../../stores/analysisStore";
 
 export default function Retorno() {
   const [menuAberto, setMenuAberto] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); 
-  
+  const { searchRequestId ,analysis } = useAnalysisStore();
   // Captura a foto real enviada pela Home. Se a página for acessada direto na URL, usa a fotoTeste para não quebrar.
   const imagemEnviada = location.state?.imagemUrl || fotoTeste;
 
@@ -60,17 +61,19 @@ export default function Retorno() {
           <div className="info-box box1">
             <div className="info-group">
               <h3>Nome popular</h3>
-              <p></p> {/* Aguardando Backend */}
+              <p>{analysis[0].CommonName}</p> 
             </div>
 
             <div className="info-group">
               <h3>Descrição</h3>
-              <p></p> {/* Aguardando Backend */}
+              <p>{analysis[0].ScientificName}</p> {/* Aguardando Backend */}
             </div>
 
             <div className="info-group">
               <h3>Espécies suscetíveis à intoxicação</h3>
-              <p></p> {/* Aguardando Backend */}
+              {analysis[0]?.SusceptibleAnimalSpecies?.map((especie, index) => (
+                <p key={index}>{especie}</p>
+              ))} 
             </div>
           </div>
 
@@ -78,17 +81,21 @@ export default function Retorno() {
           <div className="info-box box2">
             <div className="info-group">
               <h3>Riscos</h3>
-              <p></p> {/* Aguardando Backend */}
+              <p>{analysis[0].HumanRisks}</p> {/* Aguardando Backend */}
             </div>
 
             <div className="info-group">
               <h3>Sintomas</h3>
-              <p></p> {/* Aguardando Backend */}
+              {analysis[0]?.CommonSymptoms?.map((especie, index) => (
+                <p key={index}>{especie}</p>
+              ))}
             </div>
 
             <div className="info-group">
               <h3>Ações recomendadas</h3>
-              <p></p> {/* Aguardando Backend */}
+              {analysis[0]?.RecommendedActions?.map((especie, index) => (
+                <p key={index}>{especie}</p>
+              ))}
             </div>
           </div>
         </div>

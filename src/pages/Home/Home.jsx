@@ -11,19 +11,25 @@ import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconMenu from "../../assets/images/icon-menu.png";
 import iconPerson from "../../assets/images/icon-person.png";
 import iconSelecionar from "../../assets/images/icon-selecionar.png";
+import { toBase64 } from "../../utils/converter";
+import useAnalysisStore from "../../stores/analysisStore";
+import useAuthStore  from "../../stores/authStore";
 
 export default function Home() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [imagemPreview, setImagemPreview] = useState(null);
   const [carregando, setCarregando] = useState(false);
-
+  const [imageBase64, setImageBase64] = useState("");
+  const { createAnalysis, searchRequestId ,analysis, loading, error } = useAnalysisStore();
+    const { user } = useAuthStore();
   const navigate = useNavigate();
 
-  const aoSelecionarFoto = (event) => {
+  const aoSelecionarFoto = async (event) => {
     const arquivo = event.target.files[0];
     if (arquivo) {
       const urlTemporaria = URL.createObjectURL(arquivo);
       setImagemPreview(urlTemporaria);
+      setImageBase64(await toBase64(arquivo)); 
     }
   };
 
@@ -31,21 +37,24 @@ export default function Home() {
     setImagemPreview(null);
   };
 
-  const confirmarEnvio = () => {
-    setCarregando(true); // Ativa o spinner de carregamento
+  const confirmarEnvio = async (e) => {
+    e.preventDefault();
+    try{
+      setCarregando(loading); 
+      await createAnalysis(imageBase64, user.id); 
+      setCarregando(loading); 
 
-    // Simula a requisição ao Back-end durando exatamente 2 segundos
-    setTimeout(() => {
-      setCarregando(false); 
+      if(analysis && searchRequestId){
+        navigate(`/retorno/${searchRequestId}`, { 
+          state: { imagemUrl: imagemPreview } 
+        });
+      }
+    }
 
-      // ID simulado que viria do banco de dados após salvar a análise
-      const idDaAnalise = 1;
-
-      // ATUALIZADO: Agora passamos a imagemPreview dentro do objeto state!
-      navigate(`/retorno/${idDaAnalise}`, { 
-        state: { imagemUrl: imagemPreview } 
-      });
-    }, 2000);
+    catch(err){
+      alert("Erro ao analisar a planta");
+      return;
+    }
   };
 
   return (

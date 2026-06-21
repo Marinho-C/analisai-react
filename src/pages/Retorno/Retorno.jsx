@@ -66,7 +66,7 @@ export default function Retorno() {
 
             <div className="info-group">
               <h3>Descrição</h3>
-              <p>{analysis[0].ScientificName}</p> {/* Aguardando Backend */}
+              <p>{analysis[0].Description}</p> {/* Aguardando Backend */}
             </div>
 
             <div className="info-group">

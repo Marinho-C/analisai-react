@@ -12,9 +12,8 @@ export default function ListUsers() {
         <h2>Painel de Controle - Administrador</h2>
 
         <div className="Functions-Admin">
-          <button className="btn-logout" id="btn-logout" onClick={() => navigate("/")}>
-            Sair
-          </button>
+          <button className="voltar" onClick={() => navigate("/admin")}>Voltar</button>
+          <button className="btn-logout" id="btn-logout" onClick={() => navigate("/")}>Sair</button>
         </div>
       </header>
 

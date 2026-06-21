@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import "./CadastroAdmin.css";
 import "../../Resultado/Resultado.css"
+import "../Admin.css"; 
+import "../ListUsers/ListUsers.css";
 
 function BarraProgresso({ valor }) {
   return (
@@ -55,7 +57,7 @@ export default function Cadastrar() {
       <BarraProgresso valor={50} />
       <h3>Faça o seu cadastro</h3>
 
-      <button className="voltar" onClick={() => navigate(-1)} style={{marginBottom: "20px"}}>Voltar</button>
+      <button className="voltar" onClick={() => navigate("/admin")}>Voltar</button>
 
       <div className="campo">
         <label>Nome</label>

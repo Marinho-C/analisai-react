@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import "./CadastroAdmin.css";
+import "../../Resultado/Resultado.css"
 
 function BarraProgresso({ valor }) {
   return (
@@ -53,6 +54,8 @@ export default function Cadastrar() {
     <div className="cadastro-container">
       <BarraProgresso valor={50} />
       <h3>Faça o seu cadastro</h3>
+
+      <button className="voltar" onClick={() => navigate(-1)} style={{marginBottom: "20px"}}>Voltar</button>
 
       <div className="campo">
         <label>Nome</label>

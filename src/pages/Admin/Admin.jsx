@@ -721,11 +721,6 @@ export default function Admin() {
           </div>
         </div>
 
-
-        <div className="Functions-Admin">
-            <button onClick={cadastroAdmin} >Cadastrar novos administradores</button>
-            <button onClick={listUsers}>Visualizar usuários</button>
-        </div>
        </main>
     </div>
   );

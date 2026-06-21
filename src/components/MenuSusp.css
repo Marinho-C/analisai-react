@@ -56,4 +56,7 @@
 .button-edit{
     background-color: #14532d;
     color: #fff;
+    padding: 10px;
+    border: 1px solid #12b352;
+    border-radius: 10px;
 }

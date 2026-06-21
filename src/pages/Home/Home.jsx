@@ -40,9 +40,9 @@ export default function Home() {
   const confirmarEnvio = async (e) => {
     e.preventDefault();
     try{
-      setCarregando(loading); 
+      setCarregando(true); 
       await createAnalysis(imageBase64, user.id); 
-      setCarregando(loading); 
+      setCarregando(false); 
 
       if(analysis && searchRequestId){
         navigate(`/retorno/${searchRequestId}`, { 

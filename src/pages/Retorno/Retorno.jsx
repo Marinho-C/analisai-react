@@ -5,12 +5,10 @@ import MenuLateral from "../MenuLateral/MenuLateral";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconMenu from "../../assets/images/icon-menu.png";
 import iconPerson from "../../assets/images/icon-person.png";
-
-// Importada temporariamente caso você abra a tela sem enviar uma foto pela Home
 import fotoTeste from "../../assets/images/fototeste.jpeg";
 
 import "../Home/Home.css";
-import "./Retorno.css"; // Lembre-se de colocar o @import "../Resultado/Resultado.css"; no seu CSS
+import "./Retorno.css"; 
 import "../Resultado/Resultado.css";
 import useAnalysisStore from "../../stores/analysisStore";
 
@@ -18,9 +16,42 @@ export default function Retorno() {
   const [menuAberto, setMenuAberto] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); 
-  const { searchRequestId ,analysis } = useAnalysisStore();
-  // Captura a foto real enviada pela Home. Se a página for acessada direto na URL, usa a fotoTeste para não quebrar.
+  const { searchRequestId, analysis } = useAnalysisStore();
   const imagemEnviada = location.state?.imagemUrl || fotoTeste;
+
+  if (!analysis || analysis.length === 0) {
+    return (
+      <div id="resultado-container">
+        <header>
+          <div id="cabecalho">
+            <img
+              id="icon-menu"
+              src={iconMenu}
+              alt="Menu"
+              onClick={() => setMenuAberto(true)}
+            />
+            <img
+              id="logo"
+              src={logo}
+              alt="Logo"
+              onClick={() => navigate("/home")}
+              style={{ cursor: "pointer" }}
+            />
+            <img id="icon-person" src={iconPerson} alt="Perfil" />
+          </div>
+        </header>
+
+        <main id="detalhes-planta" className="erro-analise">
+          <h2>Erro ao analisar a sua foto</h2>
+          <button className="voltar" onClick={() => navigate("/home")}>
+            Voltar para o início
+          </button>
+        </main>
+
+        <MenuLateral menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
+      </div>
+    );
+  }
 
   return (
     <div id="resultado-container">
@@ -52,12 +83,10 @@ export default function Retorno() {
         </div>
 
         <div className="container-description">
-          {/* LADO ESQUERDO: IMAGEM DO USUÁRIO */}
           <div className="resultado-imagem">
             <img src={imagemEnviada} alt="Foto da planta analisada" />
           </div>
 
-          {/* CENTRO: COLUNA 1 */}
           <div className="info-box box1">
             <div className="info-group">
               <h3>Nome popular</h3>
@@ -77,11 +106,10 @@ export default function Retorno() {
             </div>
           </div>
 
-          {/* DIREITA: COLUNA 2 */}
           <div className="info-box box2">
             <div className="info-group">
               <h3>Riscos</h3>
-              <p>{analysis[0].HumanRisks}</p> {/* Aguardando Backend */}
+              <p>{analysis[0].HumanRisks}</p> 
             </div>
 
             <div className="info-group">

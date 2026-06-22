@@ -1,42 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuLateral from "../MenuLateral/MenuLateral"; 
 import CardPlanta from "../../components/CardPlanta"; // CORRIGIDO: Agora sobe 2 níveis e entra em components
+import useAnalysisStore from "../../stores/analysisStore";
+import useAuthStore from "../../stores/authStore";
+import Loading from "../../components/Loading";
 
 import iconMenu from "../../assets/images/icon-menu.png";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
-import fotoTeste from "../../assets/images/fototeste.jpeg"; // CORRIGIDO: Caminho relativo correto para o assets
 
 import "../Home/Home.css"; 
 import "./Historico.css";
 
 export default function Historico() {
   const [menuAberto, setMenuAberto] = useState(false); 
+  const { analysisHistory, loading, error, fetchAnalysisHistory } = useAnalysisStore();
+  const { user } = useAuthStore();
 
-  // Exemplo de Array simulando os dados que viriam do banco de dados futuramente
-  const historicoPesquisas = [
-    {
-      id: 1,
-      nome: "Nome da Planta 1",
-      imagem: fotoTeste,
-      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
-      rotaLink: "/resultado/1"
-    },
-    {
-      id: 2,
-      nome: "Nome da Planta 2",
-      imagem: fotoTeste,
-      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
-      rotaLink: "/resultado/2"
-    },
-    {
-      id: 3,
-      nome: "Nome da Planta 3",
-      imagem: fotoTeste,
-      descricao: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, porro perferendis suscipit quis pariatur eligendi...",
-      rotaLink: "/resultado/3"
+  useEffect(() => {
+    if (user?.id) {
+      fetchAnalysisHistory(user.id);
     }
-  ];
+  }, [user?.id]);
 
   return (
     <>
@@ -62,14 +47,27 @@ export default function Historico() {
         {/* CONTAINER DA LISTAGEM (ÚNICO) */}
         <div className="listagem-container">
           
-          {/* O .map percorre a lista e cria um componente para cada item automaticamente */}
-          {historicoPesquisas.map((planta) => (
+          {loading && <Loading />}
+          
+          {error && (
+            <div style={{ color: "#ff6b6b", textAlign: "center", padding: "20px" }}>
+              <p>Erro ao carregar histórico: {error}</p>
+            </div>
+          )}
+          
+          {!loading && analysisHistory.length === 0 && (
+            <div style={{ color: "#999", textAlign: "center", padding: "20px" }}>
+              <p>Nenhuma análise realizada ainda</p>
+            </div>
+          )}
+
+          {!loading && analysisHistory.map((planta) => (
             <CardPlanta 
-              key={planta.id} // O React exige uma chave única para renderizações em lista
-              imagem={planta.imagem}
-              nome={planta.nome}
-              descricao={planta.descricao}
-              rotaLink={planta.rotaLink}
+              key={planta.search_request_id}
+              imagem={planta.image}
+              nome={planta.analysis_result?.common_name}
+              descricao={planta.analysis_result?.Description}
+              rotaLink={`/resultado/${planta.search_request_id}`}
             />
           ))}
 

@@ -37,6 +37,8 @@ export default function Cadastrar() {
 
       <h3>Faça o seu cadastro</h3>
 
+      <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
+
       <div className="campo">
         <label>Nome</label>
         <input

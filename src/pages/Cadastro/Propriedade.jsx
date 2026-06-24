@@ -76,6 +76,7 @@ export default function Propriedade() {
               }
             : null,
       });
+      alert("Cadastro feito com sucesso!");
       navigate("/");
     } catch (err) {
       alert("Erro no cadastro");

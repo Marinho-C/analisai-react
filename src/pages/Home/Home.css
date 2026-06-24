@@ -134,20 +134,27 @@ body {
 }
 
 #recomendacao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    margin: 40px;
-
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;                 /* Espaço controlado entre as duas colunas */
+  justify-content: center;   /* Centraliza as colunas entre si */
+  max-width: 650px;          /* O SEGREDO: Limita o tamanho para não espalhar na tela */
+  margin: 40px auto 0 auto;  /* Centraliza o bloco inteiro na página e afasta do botão de cima */
+  text-align: left;          /* Garante que o texto comece da esquerda */
 }
 
+.bloco {
+  flex: 1;
+  margin: 0;
+  padding-left: 20px;        /* Dá espaço para as bolinhas aparecerem perfeitamente */
+  list-style-type: disc;     /* Garante que ambos os lados tenham bolinhas idênticas */
+}
+
+.bloco li {
+  color: #ffffff;            /* Deixa todo o texto claro e legível no fundo verde */
+  margin-bottom: 15px;       /* Dá um espaço confortável entre uma frase e outra */
+  font-size: 14px;
+}
 /* ==================== MENU LATERAL ==================== */
 
 #menu-lateral {

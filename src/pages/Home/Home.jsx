@@ -106,7 +106,16 @@ export default function Home() {
                   </div>
 
                   <div id="recomendacao">
-                    <li>Envie uma foto com iluminação clara</li>
+                    <div className="bloco">
+                      <li>Envie uma foto com iluminação clara</li>
+                      <li>Evite fotos tremidas ou fora de foco</li>
+                      <li>Garante que a foto não esteja borrada</li>
+                    </div>
+                    <div className="bloco">
+                      <li>Aproxime a câmera da folha ou da área afetada</li>
+                      <li>Mostre apenas uma planta por foto</li>
+                      <li>Evite outras plantas ou objetos misturados no fundo</li>
+                    </div>
                   </div>
                 </div>
               ) : (

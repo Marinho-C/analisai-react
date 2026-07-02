@@ -19,14 +19,14 @@
   color: #fff;
   border: 1px solid #4caf50;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s;
 }
 
 .btn-logout:hover {
-  background-color: #005030;
+  background-color: #640404;
 }
 
 .admin-main {
@@ -69,12 +69,12 @@
 }
 
 .Functions-Admin button{
-    background-color: #006432;
+    background-color: #14532d;
     color: #fff;
     border: 1px solid #4caf50;
     padding: 10px;
     font-weight: 500;
-    border-radius: 50px;
+    border-radius: 10px;
     font-family: 'Montserrat';
     cursor: pointer;
     margin: 10px;

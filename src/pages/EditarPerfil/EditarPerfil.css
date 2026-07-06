@@ -106,6 +106,13 @@ h3 {
   background-color: #7bc97e;
 }
 
+.campo-com-botao input:disabled {
+  background-color: #eaeaea;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #d0d0d0;
+}
+
 /* ===== BOTÕES FINAIS ===== */
 .botoes-finais {
   display: flex;

@@ -4,7 +4,7 @@ import MenuLateral from "../MenuLateral/MenuLateral";
 import iconMenu from "../../assets/images/icon-menu.png";
 import logo from "../../assets/images/Logo-AnalisaAI.png";
 import iconPerson from "../../assets/images/icon-person.png";
-import { BsPencil } from "react-icons/bs";
+import { BsPencil, BsCheck } from "react-icons/bs";
 
 export default function EditarPerfil() {
   const [estados, setEstados] = useState([]);
@@ -12,6 +12,22 @@ export default function EditarPerfil() {
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
   const [menuAberto, setMenuAberto] = useState(false);
+
+  
+  const [dados, setDados] = useState({
+    nome: "",
+    telefone: "",
+    localidade: "",
+    fazenda: "",
+  });
+
+  // controla se cada campo está em modo edição (true) ou só leitura (false)
+  const [editando, setEditando] = useState({
+    nome: false,
+    telefone: false,
+    localidade: false,
+    fazenda: false,
+  });
 
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
@@ -30,6 +46,16 @@ export default function EditarPerfil() {
         setCidades(dados);
       });
   }, [estadoSelecionado]);
+
+  // alterna entre editar/salvar de um campo específico
+  const toggleEditar = (campo) => {
+    setEditando((prev) => ({ ...prev, [campo]: !prev[campo] }));
+  };
+
+  // atualiza o valor de um campo enquanto digita
+  const handleChange = (campo, valor) => {
+    setDados((prev) => ({ ...prev, [campo]: valor }));
+  };
 
   return (
     <>
@@ -54,9 +80,21 @@ export default function EditarPerfil() {
               <div className="campo-com-botao">
                 <label htmlFor="nome">Nome</label>
                 <div className="input-botao-wrapper">
-                  <input type="text" id="nome" placeholder="Digite seu nome" />
-                  <button type="button" className="btn-editar">
-                    <BsPencil /> Editar</button>
+                  <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    value={dados.nome}
+                    disabled={!editando.nome}
+                    onChange={(e) => handleChange("nome", e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="btn-editar"
+                    onClick={() => toggleEditar("nome")}
+                  >
+                    {editando.nome ? <><BsCheck /> Salvar</> : <><BsPencil /> Editar</>}
+                  </button>
                 </div>
               </div>
 
@@ -81,9 +119,20 @@ export default function EditarPerfil() {
               <div className="campo-com-botao">
                 <label htmlFor="telefone">Telefone</label>
                 <div className="input-botao-wrapper">
-                  <input type="text" id="telefone" placeholder="(xx) xxxxx-xxxx" />
-                  <button type="button" className="btn-editar">
-                    <BsPencil /> Editar
+                  <input
+                    type="text"
+                    id="telefone"
+                    placeholder="(xx) xxxxx-xxxx"
+                    value={dados.telefone}
+                    disabled={!editando.telefone}
+                    onChange={(e) => handleChange("telefone", e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="btn-editar"
+                    onClick={() => toggleEditar("telefone")}
+                  >
+                    {editando.telefone ? <><BsCheck /> Salvar</> : <><BsPencil /> Editar</>}
                   </button>
                 </div>
               </div>
@@ -92,9 +141,21 @@ export default function EditarPerfil() {
               <div className="campo-com-botao">
                 <label htmlFor="localidade">Localidade</label>
                 <div className="input-botao-wrapper">
-                  <input type="text" id="localidade" placeholder="Nome da Localidade" />
-                  <button type="button" className="btn-editar">
-                    <BsPencil /> Editar</button>
+                  <input
+                    type="text"
+                    id="localidade"
+                    placeholder="Nome da Localidade"
+                    value={dados.localidade}
+                    disabled={!editando.localidade}
+                    onChange={(e) => handleChange("localidade", e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="btn-editar"
+                    onClick={() => toggleEditar("localidade")}
+                  >
+                    {editando.localidade ? <><BsCheck /> Salvar</> : <><BsPencil /> Editar</>}
+                  </button>
                 </div>
               </div>
 
@@ -119,9 +180,21 @@ export default function EditarPerfil() {
               <div className="campo-com-botao">
                 <label htmlFor="fazenda">Nome da Fazenda</label>
                 <div className="input-botao-wrapper">
-                  <input type="text" id="fazenda" placeholder="Nome da Fazenda" />
-                  <button type="button" className="btn-editar">
-                    <BsPencil /> Editar</button>
+                  <input
+                    type="text"
+                    id="fazenda"
+                    placeholder="Nome da Fazenda"
+                    value={dados.fazenda}
+                    disabled={!editando.fazenda}
+                    onChange={(e) => handleChange("fazenda", e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="btn-editar"
+                    onClick={() => toggleEditar("fazenda")}
+                  >
+                    {editando.fazenda ? <><BsCheck /> Salvar</> : <><BsPencil /> Editar</>}
+                  </button>
                 </div>
               </div>
 

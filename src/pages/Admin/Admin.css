@@ -45,9 +45,9 @@
   border-radius: 8px;
   border: 1px solid #14532d;
   height: 500px;
-  overflow: scroll;
-  scrollbar-color: #00E676 #14532d; /* cor do indicador / cor do fundo da barra */
-  scrollbar-width: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .admin-card h3 {
@@ -99,20 +99,20 @@
 }
 
 .element{
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-    text-align: left;
+  margin-top: 0;
+  display: block;
+  text-align: left;
 }
 
 .title{
-    top: 0;
-    z-index: 10px;
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    background-color: #013018;
-    flex-direction: column;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  background-color: #013018;
+  flex-direction: column;
+  padding: 12px 16px;
 }
 
 .title h3{
@@ -125,14 +125,51 @@
     margin-top: 10px;
 }
 
+.listagem{
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 12px 16px 20px 16px;
+}
+
 table{
-    margin-left: 8px;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+tbody tr:nth-child(odd){
+  background: rgba(255,255,255,0.01);
+}
+
+tbody tr:nth-child(even){
+  background: rgba(0,0,0,0.04);
 }
 
 td{
-    padding-top: 12px;
+  padding: 12px 10px;
+  vertical-align: top;
+  word-break: break-word;
+  white-space: normal;
+  color: #e6f7ee;
 }
-/* Responsividade simples para telas menores */
+
+/* small visual improvements */
+tbody td:first-child{ width: 80px; }
+tbody td:nth-child(2){ width: 40%; }
+
+/* custom scrollbar for webkit */
+.listagem::-webkit-scrollbar{
+  width: 10px;
+}
+.listagem::-webkit-scrollbar-track{
+  background: #062b1d;
+}
+.listagem::-webkit-scrollbar-thumb{
+  background: #00c46a;
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   .admin-grid {
     grid-template-columns: 1fr;

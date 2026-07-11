@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import api from "../../../api/api";
+import useAuthStore from "../../../stores/authStore";
 import "./CadastroAdmin.css";
 import "../../Resultado/Resultado.css"
 import "../Admin.css"; 
@@ -16,7 +18,9 @@ function BarraProgresso({ valor }) {
 
 export default function Cadastrar() {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
   const [ver, setVer] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -42,13 +46,45 @@ export default function Cadastrar() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formularioValido) {
-      console.log("Avançando com:", formData);
-      navigate("/admin");
-    } else {
+
+    if (!formularioValido) {
       alert("Por favor, preencha todos os campos obrigatórios e verifique as senhas.");
+      return;
+    }
+
+    if (!user?.id) {
+      alert("Usuário não autenticado.");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const payload = {
+        requested_by: user.id,
+        name: nome,
+        phone: telefone,
+        password: senha,
+        confirm_password: confirmarSenha,
+      };
+
+      const resp = await api.post("users/admins/", payload);
+
+      if (resp?.data?.user) {
+        alert("Administrador criado com sucesso.");
+        navigate("/listUsers");
+      } else {
+        alert("Administrador criado, porém resposta inesperada do servidor.");
+        navigate("/admin");
+      }
+    } catch (err) {
+      console.error(err);
+      const msg = err?.response?.data?.message || err?.message || "Erro ao criar administrador.";
+      alert(msg);
+    } finally {
+      setSubmitting(false);
     }
   };
 

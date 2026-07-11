@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import api from "../../api/api";
+import useAuthStore from "../../stores/authStore";
 import "./EditarPerfil.css";
 import MenuLateral from "../MenuLateral/MenuLateral";
 import iconMenu from "../../assets/images/icon-menu.png";
@@ -7,13 +9,14 @@ import iconPerson from "../../assets/images/icon-person.png";
 import { BsPencil, BsCheck } from "react-icons/bs";
 
 export default function EditarPerfil() {
+  const { user, setUser } = useAuthStore();
   const [estados, setEstados] = useState([]);
   const [cidades, setCidades] = useState([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
   const [menuAberto, setMenuAberto] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  
   const [dados, setDados] = useState({
     nome: "",
     telefone: "",
@@ -55,6 +58,87 @@ export default function EditarPerfil() {
   // atualiza o valor de um campo enquanto digita
   const handleChange = (campo, valor) => {
     setDados((prev) => ({ ...prev, [campo]: valor }));
+  };
+
+  useEffect(() => {
+    if (!user) return;
+
+    setDados({
+      nome: user.name || "",
+      telefone: user.phone || "",
+      localidade: user.farm?.location || "",
+      fazenda: user.farm?.name || "",
+    });
+
+    setEstadoSelecionado(user.farm?.state || "");
+    setCidadeSelecionada(user.farm?.municipality || "");
+  }, [user]);
+
+  const handleCancelar = () => {
+    if (!user) return;
+
+    setDados({
+      nome: user.name || "",
+      telefone: user.phone || "",
+      localidade: user.farm?.location || "",
+      fazenda: user.farm?.name || "",
+    });
+
+    setEstadoSelecionado(user.farm?.state || "");
+    setCidadeSelecionada(user.farm?.municipality || "");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!user?.id) {
+      alert("Usuário não autenticado.");
+      return;
+    }
+
+    const farm = user.farm || {};
+    const payload = { user_id: user.id };
+
+    if (dados.nome !== user.name) payload.name = dados.nome;
+    if (dados.telefone !== user.phone) payload.phone = dados.telefone;
+    if (dados.fazenda !== farm.name) payload.farm_name = dados.fazenda;
+    if (estadoSelecionado !== farm.state) payload.state = estadoSelecionado;
+    if (cidadeSelecionada !== farm.municipality) payload.municipality = cidadeSelecionada;
+    if (dados.localidade !== farm.location) payload.location = dados.localidade;
+
+    if (Object.keys(payload).length === 1) {
+      alert("Nenhuma alteração detectada.");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const response = await api.patch("users/profile/", payload);
+
+      const updatedUser = response?.data?.user;
+
+      if (updatedUser) {
+        setUser(updatedUser);
+        alert("Dados cadastrais atualizados com sucesso.");
+        setDados({
+          nome: updatedUser.name || "",
+          telefone: updatedUser.phone || "",
+          localidade: updatedUser.farm?.location || "",
+          fazenda: updatedUser.farm?.name || "",
+        });
+        setEstadoSelecionado(updatedUser.farm?.state || "");
+        setCidadeSelecionada(updatedUser.farm?.municipality || "");
+      } else {
+        alert("Não foi possível atualizar os dados do perfil.");
+      }
+    } catch (err) {
+      console.error(err);
+      const msg = err?.response?.data?.message || err?.message || "Erro ao atualizar o perfil.";
+      alert(msg);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -201,8 +285,12 @@ export default function EditarPerfil() {
             </div>
 
             <div className="botoes-finais">
-              <button type="button" className="btn-cancelar">Cancelar</button>
-              <button type="submit" className="btn-salvar">Salvar Alterações</button>
+              <button type="button" className="btn-cancelar" onClick={handleCancelar} disabled={submitting}>
+                Cancelar
+              </button>
+              <button type="submit" className="btn-salvar" disabled={submitting} onClick={handleSubmit}>
+                {submitting ? "Salvando..." : "Salvar Alterações"}
+              </button>
             </div>
           </form>
         </section>
